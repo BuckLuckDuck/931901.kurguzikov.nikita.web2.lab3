@@ -1,15 +1,17 @@
-using System;
-using Microsoft.AspNetCore.Hosting;
-
-namespace Lab_3.Models {
-    public class QuizQuestionModel {
+namespace Lab_3.Models
+{
+    public class QuizQuestionModel
+    {
         public int X { get; set; }
         public int Y { get; set; }
         public string Operation { get; set; }
 
-        public int CorrectAnswer {
-            get {
-                return Operation switch {
+        public int CorrectAnswer
+        {
+            get
+            {
+                return Operation switch
+                {
                     "+" => X + Y,
                     "-" => X - Y,
                     "*" => X * Y,
@@ -22,12 +24,15 @@ namespace Lab_3.Models {
 
         public int? UserAnswer { get; set; }
 
-        public bool AnswerIsCorrect {
+        public bool AnswerIsCorrect
+        {
             get { return UserAnswer is { } a && a == CorrectAnswer; }
         }
 
-        public override string ToString() {
-            return Operation switch {
+        public override string ToString()
+        {
+            return Operation switch
+            {
                 "+" => $"{X} + {Y} = ",
                 "-" => $"{X} - {Y} = ",
                 "*" => $"{X} * {Y} = ",
@@ -37,13 +42,17 @@ namespace Lab_3.Models {
             };
         }
 
-        public static QuizQuestionModel RandomQuizQuestion {
-            get {
+        public static QuizQuestionModel RandomQuizQuestion
+        {
+            get
+            {
                 var random = new Random();
-                return new QuizQuestionModel{
+                return new QuizQuestionModel
+                {
                     X = random.Next(0, 10),
                     Y = random.Next(1, 10),
-                    Operation = random.Next(4) switch {
+                    Operation = random.Next(4) switch
+                    {
                         0 => "+",
                         1 => "-",
                         2 => "*",
